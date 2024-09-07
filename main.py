@@ -44,11 +44,15 @@ def word_repeat_count(spisokslov):
 def main_prog(stroka1):
     stroka1 = punctuation_del_and_lower(stroka1)
     spisokslov = word_count(stroka1)
+
     print(f'Слов в этой строке (включая союзы и предлоги): {len(spisokslov)}')
+
     print(f'Самое длинное слово: {max(spisokslov, key=len)}')
+
     print('Гласных букв в строке:')
     for _ in glasn_char_count(stroka1):
         print(f'{_[0]} : {_[1]}')
+
     print('Сколько раз каждое слово встречается в строке (включая союзы и предлоги):')
     for _ in word_repeat_count(spisokslov):
         print(f'{_[0]} : {_[1]}')
