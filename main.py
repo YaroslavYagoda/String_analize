@@ -15,51 +15,51 @@ import string
 glassn_char = 'аеёиоуыэюя'
 
 
-def punctuation_del_and_lower(stroka1):
-    for bukva in stroka1:
+def punctuation_del_and_lower(stroka):
+    for bukva in stroka:
         if bukva in string.punctuation:
-            stroka1 = stroka1.replace(bukva, ' ')
-    return stroka1.lower()
+            stroka = stroka.replace(bukva, ' ')
+    return stroka.lower()
 
 
-def word_count(stroka1):
-    spisokslov = stroka1.split()
-    return spisokslov
+def word_to_list(stroka):
+    spisok_slov = stroka.split()
+    return spisok_slov
 
 
-def glasn_char_count(stroka1):
+def glasn_char_count(stroka):
     count_char = []
     for bukva_glasn in glassn_char:
-        count_char.append([bukva_glasn, stroka1.count(bukva_glasn)])
+        count_char.append([bukva_glasn, stroka.count(bukva_glasn)])
     return count_char
 
 
-def word_repeat_count(spisokslov):
+def word_repeat_count(spisok_slov):
     spword_count = []
-    for word in set(spisokslov):
-        spword_count.append([word, spisokslov.count(word)])
+    for word in set(spisok_slov):
+        spword_count.append([word, spisok_slov.count(word)])
     return spword_count
 
 
-def main_prog(stroka1):
-    stroka1 = punctuation_del_and_lower(stroka1)
-    spisokslov = word_count(stroka1)
+def main_prog(stroka):
+    stroka = punctuation_del_and_lower(stroka)
+    spisok_slov = word_to_list(stroka)
 
-    print(f'Слов в этой строке (включая союзы и предлоги): {len(spisokslov)}')
+    print(f'Слов в этой строке (включая союзы и предлоги): {len(spisok_slov)}')
 
-    print(f'Самое длинное слово: {max(spisokslov, key=len)}')
+    print(f'Самое длинное слово: {max(spisok_slov, key=len)}')
 
     print('Гласных букв в строке:')
-    for bukva, povtor in glasn_char_count(stroka1):
+    for bukva, povtor in glasn_char_count(stroka):
         print(f'{bukva} : {povtor}')
 
     print('Сколько раз каждое слово встречается в строке (включая союзы и предлоги):')
-    for word, povtor in word_repeat_count(spisokslov):
+    for word, povtor in word_repeat_count(spisok_slov):
         print(f'{word} : {povtor}')
 
 
 if __name__ == '__main__':
-    stroka1 = input('Введите строку для анализа: ')
+    stroka = input('Введите строку для анализа: ')
     # ниже строка для примера, что бы не вводить с клавиатуры раскоменть её)
-    # stroka1 = 'Мама мыла раму, а девочка Оля сидела за столом и ела кашу! Каша была Очень вкусная, девочка Оля рада!'
-    main_prog(stroka1)
+    # stroka = 'Мама мыла раму, а девочка Оля сидела за столом и ела кашу! Каша была Очень вкусная, девочка Оля рада!'
+    main_prog(stroka)
