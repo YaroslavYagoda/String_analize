@@ -16,9 +16,9 @@ glassn_char = 'аеёиоуыэюя'
 
 
 def punctuation_del_and_lower(stroka1):
-    for _ in stroka1:
-        if _ in string.punctuation:
-            stroka1 = stroka1.replace(_, ' ')
+    for bukva in stroka1:
+        if bukva in string.punctuation:
+            stroka1 = stroka1.replace(bukva, ' ')
     return stroka1.lower()
 
 
@@ -29,15 +29,15 @@ def word_count(stroka1):
 
 def glasn_char_count(stroka1):
     count_char = []
-    for _ in glassn_char:
-        count_char.append([_, stroka1.count(_)])
+    for bukva_glasn in glassn_char:
+        count_char.append([bukva_glasn, stroka1.count(bukva_glasn)])
     return count_char
 
 
 def word_repeat_count(spisokslov):
     spword_count = []
-    for _ in set(spisokslov):
-        spword_count.append([_, spisokslov.count(_)])
+    for word in set(spisokslov):
+        spword_count.append([word, spisokslov.count(word)])
     return spword_count
 
 
@@ -50,12 +50,12 @@ def main_prog(stroka1):
     print(f'Самое длинное слово: {max(spisokslov, key=len)}')
 
     print('Гласных букв в строке:')
-    for _ in glasn_char_count(stroka1):
-        print(f'{_[0]} : {_[1]}')
+    for bukva, povtor in glasn_char_count(stroka1):
+        print(f'{bukva} : {povtor}')
 
     print('Сколько раз каждое слово встречается в строке (включая союзы и предлоги):')
-    for _ in word_repeat_count(spisokslov):
-        print(f'{_[0]} : {_[1]}')
+    for word, povtor in word_repeat_count(spisokslov):
+        print(f'{word} : {povtor}')
 
 
 if __name__ == '__main__':
